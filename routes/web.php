@@ -11,16 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/home', function () {
+//     return view('welcome');
+// });
 
-Route::get('/test', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/test', function () {
+//     return view('admin.dashboard');
+// });
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     Auth::routes();
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 });
 

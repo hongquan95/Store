@@ -7,7 +7,7 @@
                         <i class="fa fa-navicon visible-on-sidebar-mini"></i>
                     </button>
                 </div>
-                <a class="navbar-brand" href="#pablo"> Dashboard PRO </a>
+                <a class="navbar-brand" href="#pablo"> @lang('admin.search')</a>
             </div>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -53,27 +53,30 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="https://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <i class="nc-icon nc-bullet-list-67"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">
-                                <i class="nc-icon nc-email-85"></i> Messages
+                                <i class="nc-icon nc-email-85"></i> @lang('admin.messages')
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i class="nc-icon nc-umbrella-13"></i> Help Center
+                                <i class="nc-icon nc-umbrella-13"></i> @lang('admin.help')
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i class="nc-icon nc-settings-90"></i> Settings
+                                <i class="nc-icon nc-settings-90"></i> @lang('admin.setting')
                             </a>
                             <div class="divider"></div>
                             <a class="dropdown-item" href="#">
-                                <i class="nc-icon nc-lock-circle-open"></i> Lock Screen
+                                <i class="nc-icon nc-lock-circle-open"></i> @lang('admin.lock_screen')
                             </a>
-                            <a href="#" class="dropdown-item text-danger">
-                                <i class="nc-icon nc-button-power"></i> Log out
+                            <a href="#" class="dropdown-item text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="nc-icon nc-button-power"></i> @lang('admin.logout')
                             </a>
+                            <form id="logout-form" action="{{ route('admin.logout') }}" class="dropdown-item" method="POST">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>

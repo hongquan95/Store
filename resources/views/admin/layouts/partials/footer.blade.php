@@ -4,22 +4,22 @@
                 <ul class="footer-menu">
                     <li>
                         <a href="#">
-                            Home
+                            @lang('admin.footer.home')
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Company
+                            @lang('admin.footer.company')
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Portfolio
+                            @lang('admin.footer.portfolio')
                         </a>
                     </li>
                     <li>
                         <a href="#">
-                            Blog
+                            @lang('admin.footer.blog')
                         </a>
                     </li>
                 </ul>
@@ -28,8 +28,6 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script>
-                    <a href="https://www.creative-tim.com">Creative Tim</a>, made with love
-                    for a better web
                 </p>
             </nav>
         </div>
