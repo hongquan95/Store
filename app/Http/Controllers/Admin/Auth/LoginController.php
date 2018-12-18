@@ -44,6 +44,8 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('admin.dashboard1');
+        return view('admin.dashboard');
+        // return view('admin.auth.login1');
+        // return view('admin.dashboard1');
     }
 }
