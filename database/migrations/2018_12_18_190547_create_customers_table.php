@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->json('gender')->nullable()->comment('1 is male, 2 is female, 3 is neuter');
+            $table->tinyInteger('gender')->nullable()->comment('1 is male, 2 is female, 3 is neuter');
             $table->string('avatar')->nullable();
             $table->boolean('is_actived')->default(0);
             $table->softDeletes();
