@@ -144,20 +144,36 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 mr-auto">
-                                    <form method="#" action="#">
+                                    <form method="POST" action="{{ route('admin.register') }}">
+                                        @csrf
                                         <div class="card card-plain">
                                             <div class="content">
                                                 <div class="form-group">
-                                                    <input type="email" placeholder="{{ __('admin.place_holder.user_name') }}" class="form-control">
+                                                    <input type="text"  name="name" placeholder="{{ __('admin.place_holder.user_name') }}" value="{{ old('name') }}" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}">
+                                                    @if ($errors->has('name'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('name') }}</strong>
+                                                        </span>
+                                                    @endif
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="email" placeholder="{{ __('admin.place_holder.email') }}" class="form-control">
+                                                    <input type="email" name="email" placeholder="{{ __('admin.place_holder.email') }}" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}">
+                                                    @if ($errors->has('email'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                        </span>
+                                                    @endif
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" placeholder="{{ __('admin.place_holder.password') }}" class="form-control">
+                                                    <input type="password" name="password" placeholder="{{ __('admin.place_holder.password') }}" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password') }}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password_confirmation" placeholder="{{ __('admin.place_holder.password_confirm') }}" class="form-control">
+                                                    <input type="password" name="password_confirmation" placeholder="{{ __('admin.place_holder.password_confirm') }}" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{ old('password_confirm') }}">
+                                                    @if ($errors->has('password'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </span>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="footer text-center">
