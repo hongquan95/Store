@@ -2,8 +2,13 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Customer::class, function (Faker $faker) {
+$factory->define(App\Models\Customer::class, function (Faker $faker) {
+    $faker = \Faker\Factory::create('vi_VN');
     return [
-        //
+        'name' => $faker->name,
+        'address' => $faker->address,
+        'phone' => $faker->phoneNumber,
+        'email' => $faker->safeEmail,
+        'gender' => random_int(1, 3),
     ];
 });
