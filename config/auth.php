@@ -43,7 +43,7 @@ return [
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'accounts',
         ],
     ],
 
@@ -70,9 +70,9 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
-        'users' => [
-            'driver' => 'database',
-            'table' => 'users',
+        'accounts' => [
+            'driver' => 'passport',
+            'table' => 'accounts',
         ],
     ],
 
