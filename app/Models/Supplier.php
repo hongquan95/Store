@@ -26,4 +26,12 @@ class Supplier extends Model
     {
         return $this->morphOne(Account::class, 'loginable');
     }
+
+    /**
+     * Supplier has many products
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
