@@ -12,8 +12,8 @@ class Account extends Authenticatable
 {
     use Notifiable, HasApiTokens, SoftDeletes;
 
-    const CUSTOMER = 'customer';
-    const SUPPLIER = 'supplier';
+    const TYPE_CUSTOMER = 'customer';
+    const TYPE_SUPPLIER = 'supplier';
 
     /**
      * The attributes that are mass assignable.
@@ -35,8 +35,6 @@ class Account extends Authenticatable
 
     /**
      * Loginable polimophic relationship
-     *
-     * @return Illuminate\Database\Eloquent\Relations\MorphTo morphTo
      */
     public function loginable()
     {

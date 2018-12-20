@@ -25,6 +25,6 @@ class Customer extends Model
      */
     public function account()
     {
-        $this->morphOne(Account::class, 'loginable');
+        return $this->morphOne(Account::class , 'loginable');
     }
 }

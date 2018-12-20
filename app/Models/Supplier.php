@@ -21,10 +21,9 @@ class Supplier extends Model
     /**
      * Suppiler has one account via loginable
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne MorphOne
      */
     public function account()
     {
-        $this->morphOne(Account::class, 'loginable');
+        return $this->morphOne(Account::class, 'loginable');
     }
 }
