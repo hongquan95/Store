@@ -56,3 +56,33 @@
  *         }
  *     }
  */
+
+ /**
+  * @api {get} /api/v1/products/:id Get product detail
+  * @apiName Get Product detail
+  * @apiGroup Product
+  * @apiVersion 0.1.0
+  *
+  * @apiSuccessExample Success-Response:
+  *      {
+  *          "id": 10,
+  *          "name": "Product 9",
+  *          "price": 9000,
+  *          "rating": 3,
+  *          "description": "Fugit impedit expedita natus culpa incidunt.",
+  *          "updated_at": "2018-12-20 16:31:38",
+  *          "supplier": {
+  *              "id": 20,
+  *              "name": "Tiêu Việt",
+  *              "address": "3979 Phố Đan, Phường Thi, Quận Khương Hiên TrựcHồ Chí Minh",
+  *              "phone": "033 397 5616",
+  *              "email": "than.tam@example.net",
+  *              "avatar": null
+  *          }
+  *      }
+  *
+  * @apiErrorExample Error-Response:
+  *    {
+  *        "message": "Product not found!"
+  *    }
+  */

@@ -179,6 +179,34 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/api/v1/products/:id",
+    "title": "Get product detail",
+    "name": "Get_Product_detail",
+    "group": "Product",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"id\": 10,\n    \"name\": \"Product 9\",\n    \"price\": 9000,\n    \"rating\": 3,\n    \"description\": \"Fugit impedit expedita natus culpa incidunt.\",\n    \"updated_at\": \"2018-12-20 16:31:38\",\n    \"supplier\": {\n        \"id\": 20,\n        \"name\": \"Tiêu Việt\",\n        \"address\": \"3979 Phố Đan, Phường Thi, Quận Khương Hiên TrựcHồ Chí Minh\",\n        \"phone\": \"033 397 5616\",\n        \"email\": \"than.tam@example.net\",\n        \"avatar\": null\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"message\": \"Product not found!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/product.js",
+    "groupTitle": "Product"
+  },
+  {
+    "type": "get",
     "url": "/api/v1/product?page=2&per_page=2",
     "title": "Get list products",
     "name": "Get_list_productt",
