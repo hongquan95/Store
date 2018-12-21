@@ -8,12 +8,27 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class ProductService
 {
-    public function getProducts()
+    /**
+     * Get list products
+     * @return array
+     */
+    public function getListProducts()
     {
         $params = request()->all();
         $per_page = $params['per_page'] ?? config('define.product.per_page');
         $products =  Product::with('supplier')->paginate($per_page);
-        return collect(fractal($products, new ProductTransformer));
+        return fractal($products, new ProductTransformer)->toArray();
     }
 
+    /**
+     * Get product detail
+     *
+     * @return array
+     */
+    public function getProductDetail($request)
+    {
+        $id = $request->id;
+        $product = Product::with('supplier')->find($id);
+        return fractal($product, new ProductTransformer)->toArray();
+    }
 }

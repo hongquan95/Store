@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->productService->getProducts();
+        $products = $this->productService->getListProducts();
         return $this->responseSuccess($products, Response::HTTP_OK);
     }
 
@@ -51,12 +51,16 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
+        $product = $this->productService->getProductDetail($request);
+        if ($product) {
+            return $this->responseSuccess($product, Response::HTTP_OK);
+        }
+        return $this->responseError(__('product.not_found'), Response::HTTP_NOT_FOUND);
     }
 
     /**
