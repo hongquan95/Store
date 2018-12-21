@@ -178,6 +178,47 @@ define({ "api": [
     "groupTitle": "Auth"
   },
   {
+    "type": "get",
+    "url": "/api/v1/product?page=2&per_page=2",
+    "title": "Get list products",
+    "name": "Get_list_productt",
+    "group": "Product",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "defaultValue": "1|nullable",
+            "description": "<p>Current page nullable</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "per_page",
+            "defaultValue": "15|nullable",
+            "description": "<p>Items perpage nullable</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"0\": {\n        \"id\": 3,\n        \"name\": \"Product 2\",\n        \"price\": 10000,\n        \"rating\": 3,\n        \"description\": \"Culpa neque illo aut et quae.\",\n        \"updated_at\": \"2018-12-20 16:31:38\",\n        \"supplier\": {\n            \"id\": 13,\n            \"name\": \"Bà. Lư Nga\",\n            \"address\": \"07, Thôn Hồ, Xã 9, Huyện Ánh VươngSơn La\",\n            \"phone\": \"(84)(129)470-3660\",\n            \"email\": \"trinh.phuong@example.org\",\n            \"avatar\": null\n        }\n    },\n    \"1\": {\n        \"id\": 4,\n        \"name\": \"Product 3\",\n        \"price\": 5000,\n        \"rating\": 1,\n        \"description\": \"Saepe odit omnis velit velit.\",\n        \"updated_at\": \"2018-12-20 16:31:38\",\n        \"supplier\": {\n            \"id\": 14,\n            \"name\": \"Yên Khuyến Tiếp\",\n            \"address\": \"2, Thôn Trần, Phường Ông Minh Sơn, Huyện Dung AnGia Lai\",\n            \"phone\": \"0500 740 5292\",\n            \"email\": \"thuy71@example.com\",\n            \"avatar\": null\n        }\n    },\n    \"meta\": {\n        \"pagination\": {\n            \"total\": 30,\n            \"count\": 2,\n            \"per_page\": 2,\n            \"current_page\": 2,\n            \"total_pages\": 15,\n            \"links\": {\n                \"previous\": \"http: *topno1.test/api/v1/products?page=1\",\n                \"next\": \"http: *topno1.test/api/v1/products?page=3\"\n            }\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/product.js",
+    "groupTitle": "Product"
+  },
+  {
     "success": {
       "fields": {
         "Success 200": [

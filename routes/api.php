@@ -18,6 +18,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1'], function () {
         return $request->user();
     });
     Route::post('/login', 'AuthController@login')->name('account.login');
+    Route::get('/products', 'ProductController@index');
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/logout', 'AuthController@logout')->name('account.logout');
     });
