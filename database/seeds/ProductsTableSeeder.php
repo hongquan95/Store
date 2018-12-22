@@ -12,7 +12,7 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         factory(App\Models\Product::class, 10)->create()->each(function ($product, $index) {
-            $product->name .= $index;
+            $product->name = 'Product ' . $index;
             $product->save();
         });
     }

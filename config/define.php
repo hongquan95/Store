@@ -2,5 +2,8 @@
 
 return [
     'app_name' => 'App - Store',
-    'api_token' => 'Personal Access Token'
+    'api_token' => 'Personal Access Token',
+    'product' => [
+        'per_page' => 15
+    ],
 ];

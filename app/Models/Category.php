@@ -18,4 +18,12 @@ class Category extends Model
         'name',
         'parent_id'
     ];
+
+    /**
+     * Category has many product
+     */
+    public function products()
+    {
+        return $this->belongsToMany(Category::class, 'product_categories');
+    }
 }

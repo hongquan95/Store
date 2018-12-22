@@ -19,5 +19,6 @@ return [
     'register' => [
         'fail' => 'Can\' register account'
     ],
+    'unauthorized' => 'Unauthorized!!'
 
 ];

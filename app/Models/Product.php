@@ -14,9 +14,24 @@ class Product extends Model
     protected $fillable = [
         'name',
         'price',
-        'password',
         'supplier_id',
         'rating',
         'description'
     ];
+
+    /**
+     * Product belong to a supplier
+     */
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+
+    /**
+     * Product belong many
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Product::class, 'product_categories');
+    }
 }
