@@ -22,6 +22,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1'], function () {
     Route::get('/products/{id}', 'ProductController@show');
     Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/logout', 'AuthController@logout')->name('account.logout');
+        Route::put('/products/{id}', 'ProductController@update');
     });
     Route::post('/register', 'AuthController@register')->name('account.register');
 });

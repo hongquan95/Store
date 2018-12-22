@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Services\ProductService;
 use App\Http\Controllers\Controller;
+use App\Http\Services\ProductService;
+use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
@@ -64,26 +65,16 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Supplier update product detail.
      *
-     * @param  \App\Product  $product
+     * @param  UpdateProductRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function update(UpdateProductRequest $request, int $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
+        $product = $this->productService->updateProductDetail($request, $id);
+        return $this->responseError(__('product.update_success'), Response::HTTP_OK);
     }
 
     /**
