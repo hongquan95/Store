@@ -86,3 +86,24 @@
   *        "message": "Product not found!"
   *    }
   */
+
+ /**
+  * @api {put} /api/v1/products/:id Update product
+  * @apiName Update Product detail
+  * @apiGroup Product
+  * @apiVersion 0.1.0
+  *
+  * @apiSuccessExample Success-Response:
+  *      {
+  *          "message": "Updated product successfully!"
+  *      }
+  *
+  * @apiErrorExample Error-Response:
+  *     {
+  *         "errors": {
+  *             "price": [
+  *                 "The price must be a number."
+  *             ]
+  *         }
+  *     }
+  */

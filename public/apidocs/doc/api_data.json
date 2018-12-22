@@ -247,6 +247,34 @@
     "groupTitle": "Product"
   },
   {
+    "type": "put",
+    "url": "/api/v1/products/:id",
+    "title": "Update product",
+    "name": "Update_Product_detail",
+    "group": "Product",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"message\": \"Updated product successfully!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"errors\": {\n        \"price\": [\n            \"The price must be a number.\"\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/product.js",
+    "groupTitle": "Product"
+  },
+  {
     "success": {
       "fields": {
         "Success 200": [
