@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Transformer\ProductTransformer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
@@ -21,6 +22,33 @@ class ProductService
         $products =  Product::with('supplier')->paginate($per_page);
         return fractal($products, new ProductTransformer)->toArray();
     }
+
+    /**
+     * Supplier create product
+     *
+     * @param CreateProductRequest $request
+     *
+     * @return array
+     *
+     */
+    public function createProduct(CreateProductRequest $request)
+    {
+        $params = $request->all();
+        \DB::beginTransaction();
+        try {
+            $data = $this->handlePrepareParams($params);
+            $data['supplier_id'] = currentLoginableId();
+            $product = Product::create($data);
+            \DB::commit();
+            return fractal($product, new ProductTransformer)->toArray();
+        } catch (\Exception $e) {
+            \DB::rollback();
+            \Log::error($e);
+            throw new \Exception(__('product.created_fail'));
+        }
+
+    }
+
 
     /**
      * Get product detail
@@ -49,13 +77,9 @@ class ProductService
         $params = $request->all();
         \DB::beginTransaction();
         try {
-            if ($this->validateSupplier($id)) {
-                $data = $this->handlePrepareParams($params);
-                Product::where('id', $id)->update($data);
-                \DB::commit();
-            } else {
-                throw new \Exception(__('auth.unauthorized'));
-            }
+            $data = $this->handlePrepareParams($params);
+            Product::where('id', $id)->update($data);
+            \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
             \Log::error($e);
@@ -87,7 +111,6 @@ class ProductService
         return [
             'name' => $params['name'],
             'price' =>$params['price'],
-            'rating' => $params['rating'],
             'description' => $params['description'],
         ];
     }

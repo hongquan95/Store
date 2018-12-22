@@ -178,6 +178,64 @@
     "groupTitle": "Auth"
   },
   {
+    "type": "post",
+    "url": "/api/v1/products",
+    "title": "Create product detail",
+    "name": "Create_Product",
+    "group": "Product",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "defaultValue": "required",
+            "description": "<p>Name of product</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Interger",
+            "optional": false,
+            "field": "price",
+            "defaultValue": "required|min:0",
+            "description": "<p>Price of product</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "desciprtion",
+            "defaultValue": "nullable",
+            "description": "<p>Produce desciprtion</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"id\": 32,\n    \"name\": \"Product 100012\",\n    \"price\": 4000,\n    \"rating\": null,\n    \"description\": \"Good\",\n    \"updated_at\": \"2018-12-22 16:44:21\",\n    \"supplier\": {\n        \"id\": 11,\n        \"name\": \"Cụ. Cù Bảo Hải\",\n        \"address\": \"48 Phố La, Phường Bành Thủy Hòa, Huyện HàHà Nội\",\n        \"phone\": \"+84-59-673-7748\",\n        \"email\": \"van.nhu@example.org\",\n        \"avatar\": null\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "  {\n    \"errors\": {\n        \"name\": [\n            \"The name has already been taken.\"\n        ]\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/product.js",
+    "groupTitle": "Product"
+  },
+  {
     "type": "get",
     "url": "/api/v1/products/:id",
     "title": "Get product detail",
@@ -253,6 +311,36 @@
     "name": "Update_Product_detail",
     "group": "Product",
     "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "defaultValue": "required",
+            "description": "<p>Name of product</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Interger",
+            "optional": false,
+            "field": "price",
+            "defaultValue": "required|min:0",
+            "description": "<p>Price of product</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "desciprtion",
+            "defaultValue": "nullable",
+            "description": "<p>Produce desciprtion</p>"
+          }
+        ]
+      }
+    },
     "success": {
       "examples": [
         {

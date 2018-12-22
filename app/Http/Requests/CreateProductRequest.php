@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\JsonRequest;
-use App\Http\Services\ProductService;
 
-class UpdateProductRequest extends JsonRequest
+class CreateProductRequest extends JsonRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,8 +13,7 @@ class UpdateProductRequest extends JsonRequest
      */
     public function authorize()
     {
-        $productService = new ProductService();
-        return $productService->validateSupplier($this->id) ? true : false;
+        return isSupplier() ? true : false;
     }
 
     /**
@@ -26,8 +24,8 @@ class UpdateProductRequest extends JsonRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:products,name,' . $this->id,
-            'price' => 'required|numeric|min:0',
+            'name' => 'required|unique:products,name',
+            'price' => 'required|integer|min:0',
             'description' => 'nullable',
         ];
     }

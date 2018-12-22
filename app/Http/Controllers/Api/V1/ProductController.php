@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Services\ProductService;
+use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
@@ -29,24 +30,19 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CreateProductRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+        $product = $this->productService->createProduct($request);
+        if ($product) {
+            return $this->responseSuccess($product, Response::HTTP_CREATED);
+        }
+        return $this->responseError(__('product.created_fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
+
     }
 
     /**

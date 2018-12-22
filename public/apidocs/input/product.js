@@ -57,6 +57,44 @@
  *     }
  */
 
+  /**
+  * @api {post} /api/v1/products Create product detail
+  * @apiName Create Product
+  * @apiGroup Product
+  * @apiVersion 0.1.0
+  *
+  * @apiParam {String} name=required Name of product
+  * @apiParam {Interger} price=required|min:0 Price of product
+  * @apiParam {String} desciprtion=nullable Produce desciprtion
+  *
+  * @apiSuccessExample Success-Response:
+  *     {
+  *         "id": 32,
+  *         "name": "Product 100012",
+  *         "price": 4000,
+  *         "rating": null,
+  *         "description": "Good",
+  *         "updated_at": "2018-12-22 16:44:21",
+  *         "supplier": {
+  *             "id": 11,
+  *             "name": "Cụ. Cù Bảo Hải",
+  *             "address": "48 Phố La, Phường Bành Thủy Hòa, Huyện HàHà Nội",
+  *             "phone": "+84-59-673-7748",
+  *             "email": "van.nhu@example.org",
+  *             "avatar": null
+  *         }
+  *     }
+  *
+  * @apiErrorExample Error-Response:
+  *       {
+  *         "errors": {
+  *             "name": [
+  *                 "The name has already been taken."
+  *             ]
+  *         }
+  *     }
+  */
+
  /**
   * @api {get} /api/v1/products/:id Get product detail
   * @apiName Get Product detail
@@ -92,6 +130,10 @@
   * @apiName Update Product detail
   * @apiGroup Product
   * @apiVersion 0.1.0
+  *
+  * @apiParam {String} name=required Name of product
+  * @apiParam {Interger} price=required|min:0 Price of product
+  * @apiParam {String} desciprtion=nullable Produce desciprtion
   *
   * @apiSuccessExample Success-Response:
   *      {
