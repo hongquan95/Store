@@ -74,13 +74,18 @@ class ProductController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove product.
      *
-     * @param  \App\Product  $product
+     * @param  int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(int $id)
     {
-        //
+        $message = $this->productService->removeProduct($id);
+        if ($message) {
+            return $this->responseSuccess(__('product.remove_success'), Response::HTTP_OK);
+        }
+        return $this->responseError(__('product.remove_fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

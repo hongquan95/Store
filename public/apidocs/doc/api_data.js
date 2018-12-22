@@ -305,6 +305,34 @@ define({ "api": [
     "groupTitle": "Product"
   },
   {
+    "type": "delete",
+    "url": "/api/v1/products/:id",
+    "title": "Remove product",
+    "name": "Remove_Product",
+    "group": "Product",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"message\": \"Remove product successfully!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"message\": \"Remove product fail!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/product.js",
+    "groupTitle": "Product"
+  },
+  {
     "type": "put",
     "url": "/api/v1/products/:id",
     "title": "Update product",

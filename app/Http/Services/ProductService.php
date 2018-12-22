@@ -88,6 +88,32 @@ class ProductService
     }
 
     /**
+     * Remove product
+     *
+     * @param int $id
+     *
+     * @return string
+     */
+    public function removeProduct(int $id)
+    {
+        \DB::beginTransaction();
+        try {
+            \DB::enableQueryLog();
+            if (!$this->validateSupplier($id)) {
+                return;
+            }
+            Product::where('id', $id)->delete();
+            dd(\DB::getQueryLog());
+            \DB::commit();
+            return __('product.remove_success');
+        } catch (\Exception $e) {
+            \DB::rollback();
+            \Log::error($e);
+            return;
+        }
+    }
+
+    /**
      * Check supplier validate
      *
      * @param int

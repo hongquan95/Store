@@ -24,6 +24,7 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1'], function () {
         Route::get('/logout', 'AuthController@logout')->name('account.logout');
         Route::post('/products', 'ProductController@store');
         Route::put('/products/{id}', 'ProductController@update');
+        Route::delete('/products/{id}', 'ProductController@destroy');
     });
     Route::post('/register', 'AuthController@register')->name('account.register');
 });

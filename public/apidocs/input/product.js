@@ -149,3 +149,20 @@
   *         }
   *     }
   */
+
+ /**
+  * @api {delete} /api/v1/products/:id Remove product
+  * @apiName Remove Product
+  * @apiGroup Product
+  * @apiVersion 0.1.0
+  *
+  * @apiSuccessExample Success-Response:
+  *      {
+  *          "message": "Remove product successfully!"
+  *      }
+  *
+  * @apiErrorExample Error-Response:
+    *      {
+  *          "message": "Remove product fail!"
+  *      }
+  */
