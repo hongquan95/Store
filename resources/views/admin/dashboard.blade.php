@@ -424,3 +424,7 @@
                             </div>
                         </div>
 @endsection
+
+@section('script')
+    <script type="text/jascript" src="{{ asset('js/admin/dashboard.js') }}"></script>
+@endsection
