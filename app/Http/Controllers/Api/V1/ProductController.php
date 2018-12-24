@@ -12,6 +12,10 @@ use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
+    /**
+     * @var ProductService
+     */
+    private $productService;
 
     public function __construct(ProductService $productService)
     {

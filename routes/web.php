@@ -25,6 +25,7 @@
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
     Auth::routes();
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('categories/datatables', 'CategoryController@dataTables')->name('categories.datatables');
     Route::resource('categories', 'CategoryController');
 });
 

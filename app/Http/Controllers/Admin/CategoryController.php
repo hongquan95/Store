@@ -4,9 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Services\CategoryService;
 use App\Http\Controllers\Controller as BaseController;
+
 class CategoryController extends BaseController
 {
+    /**
+     * @var CategoryService
+     */
+    private $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Show list categorys
      *
@@ -15,6 +27,18 @@ class CategoryController extends BaseController
     public function index()
     {
         return view('admin.category.index');
+    }
+
+    /**
+     * Category dataTables
+     *
+     * @param Request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dataTables(Request $request)
+    {
+        return $this->categoryService->dataTables($request);
     }
 
     /**
