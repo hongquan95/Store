@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="assets/img/default-avatar.png" />
+                <img src="{{ asset('admin/assets/img/default-avatar.png') }}" />
             </div>
             <div class="info ">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -35,65 +35,18 @@
         </div>
         <ul class="nav">
             <li class="nav-item ">
-                <a class="nav-link" href="./dashboard.html">
+                <a class="nav-link" href="{{ route('admin.dashboard') }}">
                     <i class="nc-icon nc-chart-pie-35"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
+                <a class="nav-link" href="{{ route('admin.categories.index') }}">
                     <i class="nc-icon nc-app"></i>
                     <p>
-                        Components
-                        <b class="caret"></b>
+                        Categories
                     </p>
                 </a>
-                <div class="collapse " id="componentsExamples">
-                    <ul class="nav">
-                        <li class="nav-item ">
-                            <a class="nav-link" href="buttons.html">
-                                <span class="sidebar-mini">B</span>
-                                <span class="sidebar-normal">Buttons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="grid.html">
-                                <span class="sidebar-mini">GS</span>
-                                <span class="sidebar-normal">Grid System</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="panels.html">
-                                <span class="sidebar-mini">P</span>
-                                <span class="sidebar-normal">Panels</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="sweet-alert.html">
-                                <span class="sidebar-mini">SA</span>
-                                <span class="sidebar-normal">Sweet Alert</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="notifications.html">
-                                <span class="sidebar-mini">N</span>
-                                <span class="sidebar-normal">Notifications</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="icons.html">
-                                <span class="sidebar-mini">I</span>
-                                <span class="sidebar-normal">Icons</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="typography.html">
-                                <span class="sidebar-mini">T</span>
-                                <span class="sidebar-normal">Typography</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#formsExamples">

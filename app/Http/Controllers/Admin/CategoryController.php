@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Services\CategoryService;
+use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Controllers\Controller as BaseController;
 
 class CategoryController extends BaseController
@@ -48,18 +49,20 @@ class CategoryController extends BaseController
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('admin.category.create')->with(['categories' => $categories]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CreateCategoryRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        //
+        $this->categoryService->store($request);
+        return redirect()->route('admin.categories.index');
     }
 
     /**

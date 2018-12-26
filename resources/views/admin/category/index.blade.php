@@ -4,6 +4,9 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
+        <div class="clearfix">
+            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary btn-wd pull-right mb-3">Add</a>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card data-tables">
@@ -34,5 +37,9 @@
 @endsection
 
 @section('script')
-    <script type="text/javascript" src="{{ asset('js/admin/category.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/category.js') }}">
+    </script>
+    <script type="text/javascript">
+        Category.handleList.init()
+    </script>
 @endsection
