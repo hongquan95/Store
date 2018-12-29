@@ -1,18 +1,17 @@
 @extends('admin.layouts.master')
-
 @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">
-                    <form id="wizardForm" method="POST" action="{{ route('admin.categories.store') }}">
+                    <form id="wizardForm" method="POST" action="{{ route('admin.categories.update', $category->id) }}">
                         @csrf
-                        @method('POST')
+                        @method('PUT')
                         <div class="card card-wizard">
                             <div class="card-header ">
-                                <h3 class="card-title text-center">Category create</h3>
-                                <p class="card-category text-center">Create category with name and parent</p>
+                                <h3 class="card-title text-center">Category edit</h3>
+                                <p class="card-category text-center">Edit category with name and parent</p>
                             </div>
                             <div class="card-body ">
                                 <ul class="nav nav-tabs">
@@ -36,7 +35,12 @@
                                                         <star>*</star>
                                                         @lang('category.create.name')
                                                     </label>
-                                                    <input class="form-control" type="text" name="name" placeholder="ex: Product"  required/>
+                                                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" value="{{ $category->name }}"  required/>
+                                                    @if ($errors->has('name'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('name') }}</strong>
+                                                    </span>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -50,11 +54,16 @@
                                                     <label class="control-label"><star>*</star>
                                                         @lang('category.create.parent')
                                                     </label>
-                                                    <select id="select_parent" name="parent_id">
+                                                    <select id="select_parent" name="parent_id" class="form-control{{ $errors->has('parent_id') ? ' is-invalid' : '' }}">
                                                     @php
                                                         $traverse($nodes);
                                                     @endphp
                                                     </select>
+                                                    @if ($errors->has('parent_id'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('parent_id') }}</strong>
+                                                    </span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -88,6 +97,7 @@
 @show
 
 @section('script')
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/admin/category.js') }}">
     </script>

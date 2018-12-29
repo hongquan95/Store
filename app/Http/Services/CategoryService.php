@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 
 class CategoryService
 {
@@ -21,8 +22,7 @@ class CategoryService
         $params = $request->all();
         $search = $params['search']['value'];
         \Log::info($search);
-        $categories = Category::select(['id', 'name', 'parent_id', 'created_at', 'updated_at'])
-            ->orderBy('created_at', 'desc');
+        $categories = Category::select(['id', 'name', 'parent_id', 'created_at', 'updated_at']);
 
 
         return Datatables::of($categories)
@@ -58,5 +58,40 @@ class CategoryService
         }
         $parent = Category::find($params['parent_id']);
         return Category::create($params, $parent);
+    }
+
+    /**
+     * Get category by Id
+     *
+     * @param int $id id
+     *
+     * @return Category
+     */
+    public function findById(int $id)
+    {
+        return Category::findOrFail($id);
+    }
+
+    /**
+     * Get All Categories
+     *
+     * @return Collection
+     */
+    public function getAllCategories()
+    {
+        return Category::all();
+    }
+
+    /**
+     * Update category
+     *
+     * @param UpdateCategoryRequest $request request
+     * @param int $id id
+     *
+     * @return void
+     */
+    public function update(UpdateCategoryRequest $request, int $id)
+    {
+        Category::where('id', $id)->update($request->only(['name', 'parent_id']));
     }
 }
