@@ -58,6 +58,7 @@ class CategoryService
             return Category::create($params);
         }
         $parent = Category::find($params['parent_id']);
+        session()->flash('success', __('category.create.success'));
         return Category::create($params, $parent);
     }
 
@@ -94,6 +95,7 @@ class CategoryService
     public function update(UpdateCategoryRequest $request, int $id)
     {
         Category::where('id', $id)->update($request->only(['name', 'parent_id']));
+        session()->flash('success', __('category.update.success'));
     }
 
     /**

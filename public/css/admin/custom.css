@@ -519,3 +519,9 @@
 .section-images {
     padding-bottom: 0;
 }
+
+/* ----------------My style custom ----------------------*/
+.alert {
+    border-radius: 10px;
+    font-weight: bold;
+}

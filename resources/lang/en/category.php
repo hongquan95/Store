@@ -15,7 +15,11 @@ return [
         'finish' => 'Finish',
         'name' => 'Name',
         'price' => 'Price',
-        'select_parent' => 'Please select parent'
+        'select_parent' => 'Please select parent',
+        'success' => 'Create category with descendants success!'
+    ],
+    'update' => [
+        'success' => 'Update category with descendants success!'
     ],
     'delete' => [
         'success' => 'Remove category with descendants success!'

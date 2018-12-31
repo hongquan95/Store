@@ -40,10 +40,10 @@ Category.handleList = function (){
         });
     }
     var initRemoveCategory = function () {
-        $(document).on( "click", '#remove_category', function(e) {
+        $(document).on( "click", '.remove_category', function(e) {
             e.preventDefault();
             if (window.confirm("Do you really want to remove")) {
-                $('#remove_category_form').submit()
+                $(this).closest('form').submit()
             }
         });
     }
