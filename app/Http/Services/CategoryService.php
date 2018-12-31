@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -93,5 +94,30 @@ class CategoryService
     public function update(UpdateCategoryRequest $request, int $id)
     {
         Category::where('id', $id)->update($request->only(['name', 'parent_id']));
+    }
+
+    /**
+     * Remove category with descendent
+     *
+     * @param int $id id
+     *
+     * @return Response
+     */
+    public function delete(int $id)
+    {
+        \DB::beginTransaction();
+        $category = Category::findOrFail($id);
+        $ids = $category->descendants()->pluck('id');
+        $ids[] = $id;
+        try {
+            Category::destroy($ids);
+            \DB::commit();
+            session()->flash('success', __('category.delete.success'));
+
+        } catch (\Exception $e) {
+            \Log::error($e);
+            \DB::rollback();
+            throw $e;
+        }
     }
 }

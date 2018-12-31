@@ -16,5 +16,8 @@ return [
         'name' => 'Name',
         'price' => 'Price',
         'select_parent' => 'Please select parent'
-    ]
+    ],
+    'delete' => [
+        'success' => 'Remove category with descendants success!'
+    ],
 ];

@@ -57,13 +57,42 @@
     </script>
     <!-- End Google Tag Manager -->
 </head>
+<style>
+ body .preloading{
+	overflow: hidden;
+}
+.content{
+	margin: auto;
+}
+/*dùng ảnh gif*/
+.load{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	position: absolute;
+	top: 0;
+    left: 0;
+	z-index: 100000000000;
+	display: block;
+    overflow: hidden;
+    text-align: center;
+}
+.load img {
+    position: relative;
+    top: 30%;
+}
 
-<body>
+</style>
+
+<body class="preloading">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div class="wrapper">
+    <div class="load">
+        <img src="{{ asset('svg/loading.gif') }}" alt="" srcset="">
+    </div>
+    <div class="wrapper content">
         <div class="sidebar" data-color="orange" data-image="assets/img/sidebar-5.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
@@ -186,6 +215,12 @@
 <script src="{{ asset('js/admin/custom.js') }}"></script>
 @section('script')
 @show
+<script>
+    $(window).on('load', function(event) {
+        $('.load').delay(500).fadeOut('fast');
+        $('body').removeClass('preloading');
+});
+</script>
 <!-- Facebook Pixel Code Don't Delete -->
 <script>
     ! function(f, b, e, v, n, t, s) {

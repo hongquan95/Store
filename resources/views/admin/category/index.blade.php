@@ -4,8 +4,11 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <div class="clearfix">
-            <a href="{{ route('admin.categories.create') }}" class="btn btn-primary btn-wd pull-right mb-3">Add</a>
+        <div class="clearfix row">
+            @include('admin.layouts.partials.flash')
+            <div class="col-md-4 ml-auto">
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary btn-wd w-25 pull-right">Add</a>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
