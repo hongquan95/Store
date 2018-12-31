@@ -66,25 +66,56 @@
   * @apiParam {String} name=required Name of product
   * @apiParam {Interger} price=required|min:0 Price of product
   * @apiParam {String} desciprtion=nullable Produce desciprtion
+  * @apiParam {String} category_ids=required| Array list category id
+  *
+  * @apiParamExample {json} Request-Example:
+  *      {
+  *          "name": "Product 34567812345",
+  *          "price": 4000,
+  *          "rating": 4,
+  *          "description": "Good",
+  *          "category_ids": [2, 6]
+  *      }
+  *
+  *
+  * @apiParamExample {json} Request-Error-Example:
+  *      {
+  *          "name": "Product 34567812345",
+  *          "price": 4000,
+  *          "rating": 4,
+  *          "description": "Good",
+  *          "category_ids": [2, 6]
+  *      }
   *
   * @apiSuccessExample Success-Response:
-  *     {
-  *         "id": 32,
-  *         "name": "Product 100012",
-  *         "price": 4000,
-  *         "rating": null,
-  *         "description": "Good",
-  *         "updated_at": "2018-12-22 16:44:21",
-  *         "supplier": {
-  *             "id": 11,
-  *             "name": "Cụ. Cù Bảo Hải",
-  *             "address": "48 Phố La, Phường Bành Thủy Hòa, Huyện HàHà Nội",
-  *             "phone": "+84-59-673-7748",
-  *             "email": "van.nhu@example.org",
-  *             "avatar": null
-  *         }
-  *     }
-  *
+  *      {
+  *          "id": 39,
+  *          "name": "Product 34567812345",
+  *          "price": 4000,
+  *          "rating": null,
+  *          "description": "Good",
+  *          "updated_at": "2018-12-31 17:08:09",
+  *          "supplier": {
+  *              "id": 12,
+  *              "name": "Cụ. Phí Dũng Diệp",
+  *              "address": "3 Phố Tuyết, Phường 95, Quận Thào Nguyên ThúyĐà Nẵng",
+  *              "phone": "0231 240 9936",
+  *              "email": "qkhuu@example.org",
+  *              "avatar": null
+  *          },
+  *          "categories": [
+  *              {
+  *                  "id": 2,
+  *                  "name": "Category 1",
+  *                  "description": null
+  *              },
+  *              {
+  *                  "id": 6,
+  *                  "name": "Category 114",
+  *                  "description": null
+  *              }
+  *          ]
+  *      }
   * @apiErrorExample Error-Response:
   *       {
   *         "errors": {

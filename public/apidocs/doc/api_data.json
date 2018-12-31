@@ -210,15 +210,35 @@
             "field": "desciprtion",
             "defaultValue": "nullable",
             "description": "<p>Produce desciprtion</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "category_ids",
+            "defaultValue": "required|",
+            "description": "<p>Array list category id</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"name\": \"Product 34567812345\",\n    \"price\": 4000,\n    \"rating\": 4,\n    \"description\": \"Good\",\n    \"category_ids\": [2, 6]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Request-Error-Example:",
+          "content": "{\n    \"name\": \"Product 34567812345\",\n    \"price\": 4000,\n    \"rating\": 4,\n    \"description\": \"Good\",\n    \"category_ids\": [2, 6]\n}",
+          "type": "json"
+        }
+      ]
     },
     "success": {
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"id\": 32,\n    \"name\": \"Product 100012\",\n    \"price\": 4000,\n    \"rating\": null,\n    \"description\": \"Good\",\n    \"updated_at\": \"2018-12-22 16:44:21\",\n    \"supplier\": {\n        \"id\": 11,\n        \"name\": \"Cụ. Cù Bảo Hải\",\n        \"address\": \"48 Phố La, Phường Bành Thủy Hòa, Huyện HàHà Nội\",\n        \"phone\": \"+84-59-673-7748\",\n        \"email\": \"van.nhu@example.org\",\n        \"avatar\": null\n    }\n}",
+          "content": "{\n    \"id\": 39,\n    \"name\": \"Product 34567812345\",\n    \"price\": 4000,\n    \"rating\": null,\n    \"description\": \"Good\",\n    \"updated_at\": \"2018-12-31 17:08:09\",\n    \"supplier\": {\n        \"id\": 12,\n        \"name\": \"Cụ. Phí Dũng Diệp\",\n        \"address\": \"3 Phố Tuyết, Phường 95, Quận Thào Nguyên ThúyĐà Nẵng\",\n        \"phone\": \"0231 240 9936\",\n        \"email\": \"qkhuu@example.org\",\n        \"avatar\": null\n    },\n    \"categories\": [\n        {\n            \"id\": 2,\n            \"name\": \"Category 1\",\n            \"description\": null\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Category 114\",\n            \"description\": null\n        }\n    ]\n}",
           "type": "json"
         }
       ]
