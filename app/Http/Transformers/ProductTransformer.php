@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Transformer;
+namespace App\Http\Transformers;
 
 use App\Models\Product;
 use League\Fractal\TransformerAbstract;
-use App\Http\Transformer\SupplierTransformer;
+use App\Http\Transformers\CategoryTransformer;
+use App\Http\Transformers\SupplierTransformer;
 
 class ProductTransformer extends TransformerAbstract
 {
@@ -15,6 +16,7 @@ class ProductTransformer extends TransformerAbstract
      */
     protected $defaultIncludes = [
         'supplier',
+        'categories'
     ];
 
     public function transform(Product $product)
@@ -40,4 +42,17 @@ class ProductTransformer extends TransformerAbstract
     {
         return $this->item($product->supplier, new SupplierTransformer);
     }
+
+    /**
+     * Include categories
+     *
+     * @param Product $product product
+     *
+     * @return League\Fractal\Resource\Collection
+     */
+    public function includeCategories(Product $product)
+    {
+        return $this->collection($product->categories, new CategoryTransformer);
+    }
+
 }

@@ -4,9 +4,10 @@ namespace App\Http\Services;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use App\Http\Transformer\ProductTransformer;
+use App\Http\Transformers\ProductTransformer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class ProductService
@@ -39,6 +40,13 @@ class ProductService
             $data = $this->handlePrepareParams($params);
             $data['supplier_id'] = currentLoginableId();
             $product = Product::create($data);
+            foreach($data['category_ids'] as $cateId)
+            {
+                ProductCategory::create([
+                    'product_id' => $product->id,
+                    'category_id' => $cateId,
+                ]);
+            }
             \DB::commit();
             return fractal($product, new ProductTransformer)->toArray();
         } catch (\Exception $e) {
@@ -98,12 +106,10 @@ class ProductService
     {
         \DB::beginTransaction();
         try {
-            \DB::enableQueryLog();
             if (!$this->validateSupplier($id)) {
                 return;
             }
             Product::where('id', $id)->delete();
-            dd(\DB::getQueryLog());
             \DB::commit();
             return __('product.remove_success');
         } catch (\Exception $e) {
@@ -138,6 +144,7 @@ class ProductService
             'name' => $params['name'],
             'price' =>$params['price'],
             'description' => $params['description'],
+            'category_ids' => array_unique($params['category_ids']),
         ];
     }
 }
