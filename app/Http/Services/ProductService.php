@@ -20,7 +20,7 @@ class ProductService
     {
         $params = request()->all();
         $per_page = $params['per_page'] ?? config('define.product.per_page');
-        $products =  Product::with('supplier')->paginate($per_page);
+        $products =  Product::with(['supplier', 'categories'])->paginate($per_page);
         return fractal($products, new ProductTransformer)->toArray();
     }
 
@@ -40,13 +40,7 @@ class ProductService
             $data = $this->handlePrepareParams($params);
             $data['supplier_id'] = currentLoginableId();
             $product = Product::create($data);
-            foreach($data['category_ids'] as $cateId)
-            {
-                ProductCategory::create([
-                    'product_id' => $product->id,
-                    'category_id' => $cateId,
-                ]);
-            }
+            $this->insertListCategory($product->id, $data['category_ids']);
             \DB::commit();
             return fractal($product, new ProductTransformer)->toArray();
         } catch (\Exception $e) {
@@ -86,7 +80,9 @@ class ProductService
         \DB::beginTransaction();
         try {
             $data = $this->handlePrepareParams($params);
-            Product::where('id', $id)->update($data);
+            $product = Product::find($id);
+            $this->removeListcateogry($id)->insertListCategory($id, $data['category_ids']);
+            $product->update($data);
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
@@ -146,5 +142,38 @@ class ProductService
             'description' => $params['description'],
             'category_ids' => array_unique($params['category_ids']),
         ];
+    }
+
+    /**
+     * Remove Categoris of product
+     *
+     * @param int $productId productId
+     *
+     * @return this
+     */
+    public function removeListcateogry(int $productId)
+    {
+        \DB::table('product_categories')->where('product_id', $productId)->delete();
+        return $this;
+    }
+
+    /**
+     * Insert list category to product
+     *
+     * @param int $productId productId
+     * @param array $cateIds cateIds
+     *
+     * @return this
+     */
+    public function insertListCategory(int $productId, array $cateIds)
+    {
+        foreach ($cateIds as $cateId)
+        {
+            ProductCategory::create([
+                'product_id' => $productId,
+                'category_id' => $cateId
+            ]);
+        }
+        return $this;
     }
 }

@@ -172,6 +172,14 @@
   * @apiParam {Interger} price=required|min:0 Price of product
   * @apiParam {String} desciprtion=nullable Produce desciprtion
   *
+  * @apiParamExample {json} Request-Example:
+  *    {
+  *        "name": "Product xxx11123",
+  *        "price": "11",
+  *        "rating": 4,
+  *        "category_ids": [2,6],
+  *        "description": "Good"
+  *    }
   * @apiSuccessExample Success-Response:
   *      {
   *          "message": "Updated product successfully!"

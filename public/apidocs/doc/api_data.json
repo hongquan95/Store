@@ -387,7 +387,14 @@
             "description": "<p>Produce desciprtion</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"name\": \"Product xxx11123\",\n    \"price\": \"11\",\n    \"rating\": 4,\n    \"category_ids\": [2,6],\n    \"description\": \"Good\"\n}",
+          "type": "json"
+        }
+      ]
     },
     "success": {
       "examples": [
