@@ -25,6 +25,8 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1'], function () {
         Route::post('/products', 'ProductController@store');
         Route::put('/products/{id}', 'ProductController@update');
         Route::delete('/products/{id}', 'ProductController@destroy');
+        Route::post('/cart/detail', 'CartController@getDetail');
+        Route::apiResource('orders', 'OrderController');
     });
     Route::post('/register', 'AuthController@register')->name('account.register');
 });

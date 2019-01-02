@@ -33,4 +33,17 @@ abstract class JsonRequest extends LaravelFormRequest
         throw new HttpResponseException(response()->json(['errors' => $errors
         ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY));
     }
+
+    /**
+     * Handle a failed authorization attempt.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function failedAuthorization()
+    {
+        throw new HttpResponseException(response()->json(['errors' => __('auth.unauthorized')
+        ], 401));
+    }
 }
