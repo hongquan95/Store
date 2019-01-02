@@ -219,6 +219,46 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/api/v1/order",
+    "title": "Create a order",
+    "name": "Create_order",
+    "group": "Order",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "params",
+            "defaultValue": "required|array",
+            "description": "<p>format {&quot;id1&quot; : quantity1, &quot;id2&quot;: quantity2}</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Request:",
+          "content": "{\n    \"params\": {\"1\":2, \"3\":3, \"4\":4}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "\"Create order successfully!\"",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/order.js",
+    "groupTitle": "Order"
+  },
+  {
+    "type": "post",
     "url": "/api/v1/products",
     "title": "Create product detail",
     "name": "Create_Product",
