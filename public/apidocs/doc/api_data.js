@@ -179,6 +179,46 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/api/v1/cart/detail",
+    "title": "Customer get cart detail",
+    "name": "Get_cart_detail",
+    "group": "Cart",
+    "version": "0.1.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "params",
+            "defaultValue": "required|array",
+            "description": "<p>format {&quot;id1&quot;: quantity1, &quot;id2&quot;: quantity2}</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Request",
+          "content": "\n    {\n\t        \"params\": {\"1\":2, \"2\":3,\"10\":4}\n\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"Chú. Ngụy Huynh\": [\n        {\n            \"id\": 1,\n            \"name\": \"Product 0\",\n            \"price\": 9000,\n            \"supplier\": {\n                \"id\": 11,\n                \"name\": \"Chú. Ngụy Huynh\",\n                \"address\": \"8480 Phố Ung Quỳnh Tường, Ấp Vỹ Giác, Quận LýLạng Sơn\",\n                \"phone\": \"0169 046 8420\",\n                \"email\": \"vong.dong@example.com\",\n                \"avatar\": null\n            }\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Product 1\",\n            \"price\": 4000,\n            \"supplier\": {\n                \"id\": 11,\n                \"name\": \"Chú. Ngụy Huynh\",\n                \"address\": \"8480 Phố Ung Quỳnh Tường, Ấp Vỹ Giác, Quận LýLạng Sơn\",\n                \"phone\": \"0169 046 8420\",\n                \"email\": \"vong.dong@example.com\",\n                \"avatar\": null\n            }\n        }\n    ],\n    \"Sử Thu\": [\n        {\n            \"id\": 10,\n            \"name\": \"Product 9\",\n            \"price\": 8000,\n            \"supplier\": {\n                \"id\": 20,\n                \"name\": \"Sử Thu\",\n                \"address\": \"288, Thôn Thiên Hiền, Xã Lưu, Huyện 75Khánh Hòa\",\n                \"phone\": \"0280 457 6047\",\n                \"email\": \"nthieu@example.com\",\n                \"avatar\": null\n            }\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "post",
     "url": "/api/v1/products",
     "title": "Create product detail",
     "name": "Create_Product",
