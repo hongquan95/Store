@@ -208,6 +208,7 @@
             </ul>
         </div>
     </div>
+    @include('layouts.footer')
 </body>
 <!--   S Files   -->
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
