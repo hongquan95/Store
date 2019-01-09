@@ -6,4 +6,7 @@ return [
     'product' => [
         'per_page' => 15
     ],
+    'order' => [
+        'per_page' => 10
+    ],
 ];

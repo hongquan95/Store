@@ -22,9 +22,13 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getCustomerOrderList()
     {
-        //
+        $orders = $this->orderService->getCustomerOrderList();
+        if ($orders) {
+            return $this->responseSuccess($orders, Response::HTTP_OK);
+        }
+        return $this->responseError(__('order.index.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**
@@ -48,9 +52,13 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(int $id)
     {
-        //
+        $order = $this->orderService->getOrderDetail($id);
+        if ($order) {
+            return $this->responseSuccess($order, Response::HTTP_OK);
+        }
+        return $this->responseError(__('order.get.fail'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**
