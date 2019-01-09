@@ -219,7 +219,7 @@
   },
   {
     "type": "post",
-    "url": "/api/v1/order",
+    "url": "/api/v1/orders",
     "title": "Create a order",
     "name": "Create_order",
     "group": "Order",
@@ -250,6 +250,44 @@
         {
           "title": "Success-Response:",
           "content": "\"Create order successfully!\"",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/order.js",
+    "groupTitle": "Order"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/orders/customer-order-list?per_page=4&page=2",
+    "title": "Customer get list order",
+    "name": "Customer_get_list_order",
+    "group": "Order",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"0\": {\n        \"id\": 9,\n        \"customer_id\": 2,\n        \"created_at\": \"2019-01-10 00:06:59\",\n        \"status\": 0,\n        \"products\": [\n            {\n                \"id\": 4,\n                \"name\": \"Product 3\",\n                \"price\": 10000,\n                \"quantity\": 4\n            }\n        ]\n    },\n    \"meta\": {\n        \"pagination\": {\n            \"total\": 5,\n            \"count\": 1,\n            \"per_page\": 4,\n            \"current_page\": 2,\n            \"total_pages\": 2,\n            \"links\": {\n                \"previous\": \"http://topno1.test/api/v1/orders/customer-order-list?page=1\"\n            }\n        }\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./input/order.js",
+    "groupTitle": "Order"
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/orders/:id",
+    "title": "Get order detail",
+    "name": "Get_order_detail",
+    "group": "Order",
+    "version": "0.1.0",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": " {\n    \"id\": 7,\n    \"customer_id\": 2,\n    \"created_at\": \"2019-01-09 17:03:41\",\n    \"total\": \"61000\",\n    \"status\": 0,\n    \"products\": [\n        {\n            \"id\": 1,\n            \"name\": \"Product 0\",\n            \"price\": 9000,\n            \"quantity\": 2\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Product 2\",\n            \"price\": 1000,\n            \"quantity\": 3\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Product 3\",\n            \"price\": 10000,\n            \"quantity\": 4\n        }\n    ]\n}",
           "type": "json"
         }
       ]

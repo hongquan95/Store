@@ -53,6 +53,7 @@ class OrderService
      */
     public function getCustomerOrderList()
     {
+        $params = request()->all();
         $per_page = $params['per_page'] ?? config('define.order.per_page');
         $orderId = auth('api')->user()->id;
         $orders = Order::with(['customer', 'products'])->where('customer_id', $orderId)->paginate($per_page);
